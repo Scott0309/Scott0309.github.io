@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>簡易客戶關係管理系統</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .tab-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .tab-buttons button {
+      width: 24%;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>簡易客戶關係管理系統</h1>
+  </header>
+  <div class="container">
+    <div class="tab-buttons">
+      <button onclick="switchSection('customer')">客戶管理</button>
+      <button onclick="switchSection('product')">產品管理</button>
+      <button onclick="switchSection('sales')">銷售記錄</button>
+      <button onclick="switchSection('support')">客服管理</button>
+    </div>
+
+    <!-- 客戶管理 -->
+    <div id="customer" class="section active">
+      <h2>客戶管理</h2>
+      <form id="customerForm">
+        <div class="form-group">
+          <label for="customerName">姓名</label>
+          <input type="text" id="customerName" required>
+        </div>
+        <div class="form-group">
+          <label for="customerEmail">電子郵件</label>
+          <input type="email" id="customerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="customerPhone">電話</label>
+          <input type="tel" id="customerPhone" required>
+        </div>
+        <button type="submit">新增客戶</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>電子郵件</th>
+            <th>電話</th>
+          </tr>
+        </thead>
+        <tbody id="customerTable"></tbody>
+      </table>
+    </div>
+
+    <!-- 產品管理 -->
+    <div id="product" class="section">
+      <h2>產品管理</h2>
+      <form id="productForm">
+        <div class="form-group">
+          <label for="productName">產品名稱</label>
+          <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+          <label for="productPrice">價格</label>
+          <input type="number" id="productPrice" required>
+        </div>
+        <button type="submit">新增產品</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>產品名稱</th>
+            <th>價格</th>
+          </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+      </table>
+    </div>
+
+    <!-- 銷售記錄 -->
+    <div id="sales" class="section">
+      <h2>銷售記錄</h2>
+      <form id="salesForm">
+        <div class="form-group">
+          <label for="salesCustomer">客戶姓名</label>
+          <input type="text" id="salesCustomer" required>
+        </div>
+        <div class="form-group">
+          <label for="salesProduct">產品名稱</label>
+          <input type="text" id="salesProduct" required>
+        </div>
+        <div class="form-group">
+          <label for="salesQuantity">數量</label>
+          <input type="number" id="salesQuantity" required>
+        </div>
+        <button type="submit">新增銷售記錄</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>客戶姓名</th>
+            <th>產品名稱</th>
+            <th>數量</th>
+          </tr>
+        </thead>
+        <tbody id="salesTable"></tbody>
+      </table>
+    </div>
+
+    <!-- 客服管理 -->
+    <div id="support" class="section">
+      <h2>客服管理</h2>
+      <form id="supportForm">
+        <div class="form-group">
+          <label for="supportCustomer">客戶姓名</label>
+          <input type="text" id="supportCustomer" required>
+        </div>
+        <div class="form-group">
+          <label for="supportIssue">問題描述</label>
+          <textarea id="supportIssue" required></textarea>
+        </div>
+        <button type="submit">新增客服記錄</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>客戶姓名</th>
+            <th>問題描述</th>
+          </tr>
+        </thead>
+        <tbody id="supportTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function switchSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    document.getElementById('customerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('customerName').value;
+      const email = document.getElementById('customerEmail').value;
+      const phone = document.getElementById('customerPhone').value;
+      const table = document.getElementById('customerTable');
+      const row = table.insertRow();
+      row.innerHTML = `<td>${name}</td><td>${email}</td><td>${phone}</td>`;
+      this.reset();
+    });
+
+    document.getElementById('productForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('productName').value;
+      const price = document.getElementById('productPrice').value;
+      const table = document.getElementById('productTable');
+      const row = table.insertRow();
+      row.innerHTML = `<td>${name}</td><td>${price}</td>`;
+      this.reset();
+    });
+
+    document.getElementById('salesForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const customer = document.getElementById('salesCustomer').value;
+      const product = document.getElementById('salesProduct').value;
+      const quantity = document.getElementById('salesQuantity').value;
+      const table = document.getElementById('salesTable');
+      const row = table.insertRow();
+      row.innerHTML = `<td>${customer}</td><td>${product}</td><td>${quantity}</td>`;
+      this.reset();
+    });
+
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const customer = document.getElementById('supportCustomer').value;
+      const issue = document.getElementById('supportIssue').value;
+      const table = document.getElementById('supportTable');
+      const row = table.insertRow();
+      row.innerHTML = `<td>${customer}</td><td>${issue}</td>`;
+      this.reset();
+    });
+  </script>
+</body>
+</html>
