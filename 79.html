@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上花店 - 精選花束</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-card p {
+            color: #777;
+            margin: 0 0 10px;
+        }
+        .product-card .price {
+            color: #ff6f61;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .product-card button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .product-card button:hover {
+            background-color: #e65a50;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>線上花店精選花束</h1>
+        <p>讓每個特別時刻更加美麗！</p>
+    </div>
+    <div class="container">
+        <div class="product">
+            <!-- 第一個產品 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="玫瑰花束">
+                <h3>浪漫玫瑰花束</h3>
+                <p>經典紅玫瑰，適合表達愛意。</p>
+                <p class="price">NT$1,200</p>
+                <button>立即購買</button>
+            </div>
+            <!-- 第二個產品 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="向日葵花束">
+                <h3>陽光向日葵花束</h3>
+                <p>充滿活力的向日葵，帶來溫暖的祝福。</p>
+                <p class="price">NT$900</p>
+                <button>立即購買</button>
+            </div>
+            <!-- 第三個產品 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="百合花束">
+                <h3>純潔百合花束</h3>
+                <p>象徵純潔與優雅的百合。</p>
+                <p class="price">NT$1,500</p>
+                <button>立即購買</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2025 線上花店 | 我們的花卉讓愛傳遞。</p>
+    </div>
+</body>
+</html>
