@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上花店 CRM 系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        // 切換頁面顯示
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // 儲存使用者資料到 localStorage
+        function saveUserData() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (name && email) {
+                localStorage.setItem('userName', name);
+                localStorage.setItem('userEmail', email);
+                alert('資料已儲存！');
+                showSection('thank-you');
+            } else {
+                alert('請填寫完整資訊！');
+            }
+        }
+
+        // 顯示已儲存的使用者資料
+        function showSavedData() {
+            const name = localStorage.getItem('userName') || '尚未填寫';
+            const email = localStorage.getItem('userEmail') || '尚未填寫';
+            document.getElementById('saved-name').textContent = name;
+            document.getElementById('saved-email').textContent = email;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 名單誘餌贈品 -->
+        <div id="lead-magnet" class="section">
+            <h1>免費花藝指南</h1>
+            <p>立即下載《打造完美花束的5個祕訣》，提升您的花藝技巧！</p>
+            <button onclick="showSection('lead-collect')">立即領取</button>
+        </div>
+
+        <!-- 名單收集頁 -->
+        <div id="lead-collect" class="section hidden">
+            <h1>填寫資訊領取指南</h1>
+            <input type="text" id="name" placeholder="輸入您的姓名">
+            <input type="email" id="email" placeholder="輸入您的電子郵件">
+            <button onclick="saveUserData()">提交</button>
+        </div>
+
+        <!-- 感謝頁 -->
+        <div id="thank-you" class="section hidden">
+            <h1>感謝您的提交！</h1>
+            <p>我們已將指南發送至您的電子郵件。</p>
+            <button onclick="showSection('saved-data'); showSavedData();">查看已儲存的資料</button>
+        </div>
+
+        <!-- 查看儲存資料 -->
+        <div id="saved-data" class="section hidden">
+            <h1>您的資料</h1>
+            <p><strong>姓名：</strong><span id="saved-name"></span></p>
+            <p><strong>電子郵件：</strong><span id="saved-email"></span></p>
+            <button onclick="showSection('lead-magnet')">返回首頁</button>
+        </div>
+    </div>
+</body>
+</html>
